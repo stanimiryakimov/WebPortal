@@ -1,4 +1,19 @@
-﻿@{
+﻿@model System.Collections.Generic.List<WebPortal.Models.MoodleResource>
+
+<table>
+    @foreach (var resource in Model)
+    {
+    <tr>
+        <td>@resource.Id</td>
+        <td>@resource.Added</td>
+        <td>@resource.Course</td>
+        <td>@resource.Description</td>
+        <td>@resource.Fn</td>
+        <td>@resource.Resource_Type</td>
+    </tr>
+    }
+</table>
+@*@{
     ViewBag.Title = "Contact";
 }
 <h2>@ViewBag.Title.</h2>
@@ -14,4 +29,4 @@
 <address>
     <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
     <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+</address>*@

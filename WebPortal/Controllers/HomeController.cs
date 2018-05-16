@@ -27,7 +27,7 @@ namespace WebPortal.Controllers
             var result = dataProvider.GetAllEvents();
             var moodleResources = dataProvider.GetAllMoodleResources();
             var news = dataProvider.GetAllNews();
-            return View();
+            return View(moodleResources);
         }
     }
 }
