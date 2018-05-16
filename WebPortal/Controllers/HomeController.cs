@@ -1,11 +1,14 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Linq;
+using System.Web.Mvc;
 using WebPortal.Data;
 
 namespace WebPortal.Controllers
 {
     public class HomeController : Controller
     {
-        private DataProvider dataProvider;
+        private UnweResourceService dataProvider;
+        private WebPortalContext context;
 
         public ActionResult Index()
         {
@@ -21,12 +24,28 @@ namespace WebPortal.Controllers
 
         public ActionResult Contact()
         {
-            dataProvider = new DataProvider();
+            dataProvider = new UnweResourceService();
+            context = new WebPortalContext();
+            context.Events.Add(new Models.EntityFrameworkModels.Event()
+            {
+                BeginDate = DateTime.Now,
+                Description = "Test Event",
+                Url = "https://metafication.com",
+                EndDate = DateTime.Now,
+                DepartmentId = 10,
+                Location = "UNSS"
+            });
+            context.SaveChanges();
+            var allEvents = context.Events.ToList();
+
+            //var moodleResources = dataProvider.GetAllMoodleResources();
+            
             ViewBag.Message = "Your contact page.";
 
             var result = dataProvider.GetAllEvents();
             var moodleResources = dataProvider.GetAllMoodleResources();
             var news = dataProvider.GetAllNews();
+
             return View(moodleResources);
         }
     }
