@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using WebPortal.Data;
+using WebPortal.Mappers;
 
 namespace WebPortal.Controllers
 {
@@ -26,20 +27,10 @@ namespace WebPortal.Controllers
         {
             dataProvider = new UnweResourceService();
             context = new WebPortalContext();
-            context.Events.Add(new Models.EntityFrameworkModels.Event()
-            {
-                BeginDate = DateTime.Now,
-                Description = "Test Event",
-                Url = "https://metafication.com",
-                EndDate = DateTime.Now,
-                DepartmentId = 10,
-                Location = "UNSS"
-            });
-            context.SaveChanges();
-            var allEvents = context.Events.ToList();
-
-            //var moodleResources = dataProvider.GetAllMoodleResources();
             
+            var moodleRes = dataProvider.GetAllMoodleResources();
+            var resource = Mapper.MapResource(moodleRes[0]);
+
             ViewBag.Message = "Your contact page.";
 
             var result = dataProvider.GetAllEvents();
