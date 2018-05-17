@@ -152,12 +152,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Data\UnweResourceService.cs" />
     <Compile Include="Data\WebPortalContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Mappers\Mapper.cs" />
     <Compile Include="Migrations\201805161143501_InitialMigrate.cs" />
     <Compile Include="Migrations\201805161143501_InitialMigrate.Designer.cs">
       <DependentUpon>201805161143501_InitialMigrate.cs</DependentUpon>
@@ -166,9 +164,6 @@
     <Compile Include="Models\EntityFrameworkModels\Event.cs" />
     <Compile Include="Models\EntityFrameworkModels\MoodleResource.cs" />
     <Compile Include="Models\EntityFrameworkModels\News.cs" />
-    <Compile Include="Models\Event.cs" />
-    <Compile Include="Models\MoodleResource.cs" />
-    <Compile Include="Models\News.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -208,7 +203,7 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Events.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

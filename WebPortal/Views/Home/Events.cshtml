@@ -1,0 +1,12 @@
+﻿@model System.Collections.Generic.List<WebPortal.Models.EntityFrameworkModels.Event>
+
+<table class=".table">
+    @foreach (var particularEvent in Model)
+    {
+    <tr>
+        <td>@particularEvent.BeginDate.ToString("hh:mm")</td>
+        <td>@particularEvent.EndDate.ToString("hh:mm")</td>
+        <td><a href="@particularEvent.Url">@particularEvent.Description</a></td>
+    </tr>
+    }
+</table>

@@ -1,14 +1,11 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Web.Mvc;
 using WebPortal.Data;
-using WebPortal.Mappers;
 
 namespace WebPortal.Controllers
 {
     public class HomeController : Controller
     {
-        private UnweResourceService dataProvider;
         private WebPortalContext context;
 
         public ActionResult Index()
@@ -23,21 +20,11 @@ namespace WebPortal.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Events()
         {
-            dataProvider = new UnweResourceService();
             context = new WebPortalContext();
-            
-            var moodleRes = dataProvider.GetAllMoodleResources();
-            var resource = Mapper.MapResource(moodleRes[0]);
-
-            ViewBag.Message = "Your contact page.";
-
-            var result = dataProvider.GetAllEvents();
-            var moodleResources = dataProvider.GetAllMoodleResources();
-            var news = dataProvider.GetAllNews();
-
-            return View(moodleResources);
+            var allEvents = context.Events.ToList();
+            return View(allEvents);
         }
     }
 }
