@@ -26,5 +26,35 @@ namespace WebPortal.Controllers
             var allEvents = context.Events.ToList();
             return View(allEvents);
         }
+
+        public ActionResult GetLatestEvents()
+        {
+            context = new WebPortalContext();
+
+            var fiveLatestEvents = context.Events
+                .OrderByDescending(a => a.BeginDate).Take(5).ToList();
+
+            return View(fiveLatestEvents);
+        }
+
+        public ActionResult GetLatestNews()
+        {
+            context = new WebPortalContext();
+
+            var fiveLatestNews = context.News
+                .OrderByDescending(a => a.Published).Take(5).ToList();
+
+            return View(fiveLatestNews);
+        }
+
+        public ActionResult GetLastResources()
+        {
+            context = new WebPortalContext();
+
+            var lastResources = context.MoodleResource
+                .OrderByDescending(a => a.Description).Distinct().Take(5).ToList();
+
+            return View(lastResources);
+        }
     }
 }

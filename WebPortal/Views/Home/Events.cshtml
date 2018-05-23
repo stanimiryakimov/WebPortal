@@ -1,12 +1,21 @@
 ﻿@model System.Collections.Generic.List<WebPortal.Models.EntityFrameworkModels.Event>
 
-<table class=".table">
-    @foreach (var particularEvent in Model)
-    {
-    <tr>
-        <td>@particularEvent.BeginDate.ToString("hh:mm")</td>
-        <td>@particularEvent.EndDate.ToString("hh:mm")</td>
-        <td><a href="@particularEvent.Url">@particularEvent.Description</a></td>
-    </tr>
-    }
-</table>
+<div class="container"style="padding:15px">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Започва</th>
+                <th scope="col">Приключва</th>
+                <th scope="col">Име на събитието</th>
+            </tr>
+        </thead>
+        @foreach (var particularEvent in Model)
+        {
+            <tr>
+                <td>@particularEvent.BeginDate.ToString("hh:mm")</td>
+                <td>@particularEvent.EndDate.ToString("hh:mm")</td>
+                <td><a href="@particularEvent.Url">@particularEvent.Description</a></td>
+            </tr>
+        }
+    </table>
+</div>

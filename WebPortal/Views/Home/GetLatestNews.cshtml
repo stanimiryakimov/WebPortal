@@ -1,0 +1,8 @@
+﻿@model System.Collections.Generic.List<WebPortal.Models.EntityFrameworkModels.News>
+
+<div class="col-md-4">
+    @foreach (var news in Model)
+    {
+        <div>@news.Description</div>
+    }
+</div>

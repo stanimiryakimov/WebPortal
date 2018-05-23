@@ -1,0 +1,8 @@
+﻿@model System.Collections.Generic.List<WebPortal.Models.EntityFrameworkModels.Event>
+
+<div class="col-md-4">
+    @foreach (var particularEvent in Model)
+    {
+        <div><a href="@particularEvent.Url">@particularEvent.Description</a></div>
+    }
+</div>
