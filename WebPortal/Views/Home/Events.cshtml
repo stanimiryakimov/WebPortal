@@ -1,6 +1,6 @@
 ﻿@model System.Collections.Generic.List<WebPortal.Models.EntityFrameworkModels.Event>
 
-<div class="container"style="padding:15px">
+<div class="container" style="padding:15px">
     <table class="table table-striped">
         <thead>
             <tr>
@@ -15,6 +15,15 @@
                 <td>@particularEvent.BeginDate.ToString("hh:mm")</td>
                 <td>@particularEvent.EndDate.ToString("hh:mm")</td>
                 <td><a href="@particularEvent.Url">@particularEvent.Description</a></td>
+                @if (!particularEvent.IsFavourite)
+                {
+                    <td>
+                        <form action="SetAsFavourite" method="POST">
+                            <input type="hidden" name="particularEventId" value="@particularEvent.Id">
+                            <input type="submit" value="Pin">
+                        </form>
+                    </td>
+                }
             </tr>
         }
     </table>

@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using WebPortal.Data;
+using WebPortal.Models.EntityFrameworkModels;
 
 namespace WebPortal.Controllers
 {
@@ -8,9 +9,28 @@ namespace WebPortal.Controllers
     {
         private WebPortalContext context;
 
+        public HomeController()
+        {
+            context = new WebPortalContext();
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var pinnedEvents = context.Events
+                .Where(e => e.IsFavourite == true)
+                .OrderBy(e => e.BeginDate)
+                .ToList();
+            
+            var pinnedNews = context.News
+                .Where(n => n.IsFavourite == true)
+                .OrderBy(e => e.Published)
+                .ToList();
+
+            Resources resources = new Resources();
+            resources.Events = pinnedEvents;
+            resources.News = pinnedNews;
+
+            return View(resources);
         }
 
         public ActionResult About()
@@ -22,15 +42,12 @@ namespace WebPortal.Controllers
 
         public ActionResult Events()
         {
-            context = new WebPortalContext();
             var allEvents = context.Events.ToList();
             return View(allEvents);
         }
 
         public ActionResult GetLatestEvents()
         {
-            context = new WebPortalContext();
-
             var fiveLatestEvents = context.Events
                 .OrderByDescending(a => a.BeginDate).Take(5).ToList();
 
@@ -39,8 +56,6 @@ namespace WebPortal.Controllers
 
         public ActionResult GetLatestNews()
         {
-            context = new WebPortalContext();
-
             var fiveLatestNews = context.News
                 .OrderByDescending(a => a.Published).Take(5).ToList();
 
@@ -49,12 +64,23 @@ namespace WebPortal.Controllers
 
         public ActionResult GetLastResources()
         {
-            context = new WebPortalContext();
-
             var lastResources = context.MoodleResource
                 .OrderByDescending(a => a.Description).Distinct().Take(5).ToList();
 
             return View(lastResources);
+        }
+
+        [HttpPost]
+        public ActionResult SetAsFavourite(int particularEventId)
+        {
+            var particularEvent = context.Events
+                .FirstOrDefault(e => e.Id == particularEventId);
+
+            particularEvent.IsFavourite = true;
+
+            context.SaveChanges();
+
+            return RedirectToAction("Events");
         }
     }
 }

@@ -162,8 +162,12 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityFrameworkModels\Event.cs" />
+    <Compile Include="Models\EntityFrameworkModels\IEvent.cs" />
+    <Compile Include="Models\EntityFrameworkModels\IMoodleResource.cs" />
+    <Compile Include="Models\EntityFrameworkModels\INews.cs" />
     <Compile Include="Models\EntityFrameworkModels\MoodleResource.cs" />
     <Compile Include="Models\EntityFrameworkModels\News.cs" />
+    <Compile Include="Models\EntityFrameworkModels\Resources.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

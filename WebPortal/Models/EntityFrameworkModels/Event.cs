@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebPortal.Models.EntityFrameworkModels
 {
-    public class Event
+    public class Event : IEvent
     {
         [Key]
         public int Id { get; set; }

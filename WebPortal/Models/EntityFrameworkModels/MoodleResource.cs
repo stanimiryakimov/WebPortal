@@ -2,7 +2,7 @@
 
 namespace WebPortal.Models.EntityFrameworkModels
 {
-    public class MoodleResource
+    public class MoodleResource : IMoodleResource
     {
         public int Id { get; set; }
         public string Fn { get; set; }

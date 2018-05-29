@@ -2,7 +2,7 @@
 
 namespace WebPortal.Models.EntityFrameworkModels
 {
-    public class News
+    public class News : INews
     {
         public int Id { get; set; }
         public int DepartmentId { get; set; }
