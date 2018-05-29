@@ -7,11 +7,11 @@ namespace WebPortal.Controllers
 {
     public class HomeController : Controller
     {
-        private WebPortalContext context;
+        private readonly WebPortalContext context;
 
-        public HomeController()
+        public HomeController(WebPortalContext webPortalContext)
         {
-            context = new WebPortalContext();
+            context = webPortalContext;
         }
 
         public ActionResult Index()
