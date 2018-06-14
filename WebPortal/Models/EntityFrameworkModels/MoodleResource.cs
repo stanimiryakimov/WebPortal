@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebPortal.Models.EntityFrameworkModels
 {
     public class MoodleResource : IMoodleResource
     {
+        [Key]
         public int Id { get; set; }
         public string Fn { get; set; }
         public string Course { get; set; }

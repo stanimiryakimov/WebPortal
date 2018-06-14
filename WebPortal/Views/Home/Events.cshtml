@@ -24,6 +24,15 @@
                         </form>
                     </td>
                 }
+                else
+                {
+                    <td>
+                        <form action="RemoveEventFromFavourite" method="post">
+                            <input type="hidden" name="particularEventId" value="@particularEvent.Id" />
+                            <input type="submit" value="Unpin" />
+                        </form>
+                    </td>
+                }
             </tr>
         }
     </table>

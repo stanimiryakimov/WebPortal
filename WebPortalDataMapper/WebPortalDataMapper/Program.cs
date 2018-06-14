@@ -12,7 +12,6 @@ namespace WebPortalDataMapper
         {
             while (true)
             {
-                // 0
                 Thread.Sleep(10000);
                 SyncDatabase();
             }

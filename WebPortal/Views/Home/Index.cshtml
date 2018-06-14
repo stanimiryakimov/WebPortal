@@ -1,25 +1,25 @@
 ﻿@model WebPortal.Models.EntityFrameworkModels.Resources
 
 <div style='overflow-x: hidden;'>
-    <div class="row">
+    <div class="row"  style="background-color:azure; padding:15px;">
         @foreach (var e in Model.Events)
         {
-            <div class="card col-md-4" style="padding:15px;">
-                <img class="card-img-top"
-                    src="https://pbs.twimg.com/profile_images/946702815757590529/QqD3hrCp_400x400.jpg" width="200px" height="200px" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Събитие</h5>
-                    <p class="card-text">@e.Description</p>
-                    <a href="@e.Url" class="btn btn-primary">Kъм събитието</a>
-                </div>
+            <div class="col-md-12">
+                <h5>Събитие</h5>
+                <p>@e.Description</p>
+                <a href="@e.Url" class="btn btn-primary">Kъм събитието</a>
+            </div>
+        }
+        @foreach (var n in Model.News)
+        {
+            <div class="col-md-12">
+                <h5>Новина</h5>
+                <h4>@n.Description</h4>
+                <h5>@n.Published</h5>
             </div>
         }
     </div>
-    @*@foreach (var n in Model.News)
-        {
-            <h4>@n.Description</h4>
-            <h5>@n.Published</h5>
-        }*@
+
 
     <div class="row">
         <div class="col-md-4">
@@ -28,7 +28,7 @@
                 @Html.Action("GetLatestEvents", "Home", null)
             </p>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4"">
             <h2>Новини</h2>
             <p>
                 @Html.Action("GetLatestNews", "Home", null)

@@ -1,0 +1,37 @@
+﻿@model System.Collections.Generic.List<WebPortal.Models.EntityFrameworkModels.News>
+
+<div class="container" style="padding:15px">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Описание</th>
+                <th scope="col">Публикувана на</th>
+            </tr>
+        </thead>
+        @foreach (var news in Model)
+        {
+            <tr>
+                <td>@news.Description</td>
+                <td>@news.Published.ToString("dd/MM/yyyy")</td>
+                @if (!news.IsFavourite)
+                {
+                    <td>
+                        <form action="SetNewsAsFavourite" method="POST">
+                            <input type="hidden" name="particularNewsId" value="@news.Id">
+                            <input type="submit" value="Pin">
+                        </form>
+                    </td>
+                }
+                else
+                {
+                    <td>
+                        <form action="RemoveNewsFromFavourite" method="post">
+                            <input type="hidden" name="particularNewsId" value="@news.Id" />
+                            <input type="submit" value="Unpin" />
+                        </form>
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+</div>

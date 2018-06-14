@@ -33,11 +33,11 @@ namespace WebPortal.Controllers
             return View(resources);
         }
 
-        public ActionResult About()
+        public ActionResult News()
         {
-            ViewBag.Message = "Your application description page.";
+            var allNews = context.News.ToList();
 
-            return View();
+            return View(allNews);
         }
 
         public ActionResult Events()
@@ -81,6 +81,45 @@ namespace WebPortal.Controllers
             context.SaveChanges();
 
             return RedirectToAction("Events");
+        }
+
+        [HttpPost]
+        public ActionResult SetNewsAsFavourite(int particularNewsId)
+        {
+            var particularNews = context.News
+                .FirstOrDefault(n => n.Id == particularNewsId);
+
+            particularNews.IsFavourite = true;
+
+            context.SaveChanges();
+
+            return RedirectToAction("News");
+        }
+
+        [HttpPost]
+        public ActionResult RemoveEventFromFavourite(int particularEventId)
+        {
+            var particularEvent = context.Events
+                .FirstOrDefault(e => e.Id == particularEventId);
+
+            particularEvent.IsFavourite = false;
+
+            context.SaveChanges();
+
+            return RedirectToAction("Events");
+        }
+
+        [HttpPost]
+        public ActionResult RemoveNewsFromFavourite(int particularNewsId)
+        {
+            var particularNews = context.News
+               .FirstOrDefault(n => n.Id == particularNewsId);
+
+            particularNews.IsFavourite = false;
+
+            context.SaveChanges();
+
+            return RedirectToAction("News");
         }
     }
 }
